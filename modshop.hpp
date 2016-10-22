@@ -2,13 +2,14 @@
 class modshop {
     idd = 9867;
     name = "modshop";
-    onload = "";
-    onunload = "";
+    onLoad = "client_modshopcamera  = ""CAMERA"" camCreate (getPos player); showCinemaBorder true; client_modshopcamera cameraEffect [""EXTERNAL"", ""BACK""];";
+    onunload = "client_modshopcamera cameraEffect [""TERMINATE"",""BACK""]; camDestroy client_modshopcamera;";
     movingEnable = 0;
     enableSimulation = 1;
 
     class controls {
 
+     
       class modshop_paintjob_background: RscPicture
       {
         idc = 1205;
@@ -69,6 +70,27 @@ class modshop {
       	h = 0.055 * safezoneH;
       };
 
+      class LicenseEntry: RscEdit
+      {
+        idc = 9993;
+        text = "1234567"; //--- ToDo: Localize;
+        x = 0.304062 * safezoneW + safezoneX;
+        y = 0.797 * safezoneH + safezoneY;
+        w = 0.0867957 * safezoneW;
+        h = 0.0231906 * safezoneH;
+      };
+
+      class PurchaseOption: RscButton
+      {
+        idc = 1600;
+        onButtonClick = "[] spawn client_fnc_processPlates";
+        text = "Confirm"; //--- ToDo: Localize;
+        x = 0.422656 * safezoneW + safezoneX;
+        y = 0.797 * safezoneH + safezoneY;
+        w = 0.0878543 * safezoneW;
+        h = 0.0229999 * safezoneH;
+      };
+
       class modshop_checkout_background: RscPicture
       {
         idc = 1208;
@@ -99,6 +121,17 @@ class modshop {
       	h = 0.286 * safezoneH;
       };
 
+      class modshop_upgradecar: RscButton
+      {
+        idc = 1602;
+        onButtonClick = "[] spawn client_fnc_carupdate";
+        text = "Upgrade"; //--- ToDo: Localize;
+        x = 0.139062 * safezoneW + safezoneX;
+        y = 0.61 * safezoneH + safezoneY;
+        w = 0.0928125 * safezoneW;
+        h = 0.033 * safezoneH;
+      };
+
       class modshop_mod: RscPicture
       {
       	idc = 1204;
@@ -112,7 +145,7 @@ class modshop {
       class modshop_checkout_button: RscButton
       {
         idc = 1601;
-        text = "Checkout?"; //--- ToDo: Localize;
+        text = "Purchase"; //--- ToDo: Localize;
         action = "closeDialog 0";
         colorBackground[] = {0,0,0,0.6};
         colorActive[] = {0,0,0,0.6};
@@ -122,97 +155,46 @@ class modshop {
         h = 0.022 * safezoneH;
       };
 
-      class modshop_wheels: RscListbox
+      class modshop_wheelcolor_change: RscButton
       {
-      	idc = 1500;
-        colorBackground[] = {0,0,0,0.6};
-        colorActive[] = {0,0,0,0.6};
-      	x = 0.144219 * safezoneW + safezoneX;
-      	y = 0.269 * safezoneH + safezoneY;
-      	w = 0.0721875 * safezoneW;
-      	h = 0.022 * safezoneH;
-        onLBSelChanged =
+        idc = 1603;
+        onButtonClick = "";
+        text = "Change"; //--- ToDo: Localize;
+        x = 0.139062 * safezoneW + safezoneX;
+        y = 0.269 * safezoneH + safezoneY;
+        w = 0.0928125 * safezoneW;
+        h = 0.033 * safezoneH;
       };
 
-
-      class modshop_tint: RscListbox
+      class modshop_tint_change: RscButton
       {
-      	idc = 1501;
-        colorBackground[] = {0,0,0,0.6};
-        colorActive[] = {0,0,0,0.6};
-      	x = 0.144219 * safezoneW + safezoneX;
-      	y = 0.357 * safezoneH + safezoneY;
-      	w = 0.0721875 * safezoneW;
-      	h = 0.022 * safezoneH;
-        onLBSelChanged =
+        idc = 1604;
+        onButtonClick = "";
+        text = "Change"; //--- ToDo: Localize;
+        x = 0.139062 * safezoneW + safezoneX;
+        y = 0.346 * safezoneH + safezoneY;
+        w = 0.0928125 * safezoneW;
+        h = 0.033 * safezoneH;
       };
 
+      class modshop_body_change: RscButton
+     {
+       idc = 1605;
+       onButtonClick = "";
+       text = "Change"; //--- ToDo: Localize;
+       x = 0.139062 * safezoneW + safezoneX;
+       y = 0.423 * safezoneH + safezoneY;
+       w = 0.0928125 * safezoneW;
+       h = 0.033 * safezoneH;
+     };
 
-      class modshop_body: RscListbox
-      {
-      	idc = 1502;
-        colorBackground[] = {0,0,0,0.6};
-        colorActive[] = {0,0,0,0.6};
-      	x = 0.144219 * safezoneW + safezoneX;
-      	y = 0.434 * safezoneH + safezoneY;
-      	w = 0.0721875 * safezoneW;
-      	h = 0.022 * safezoneH;
-        onLBSelChanged =
-      };
-
-
-      class modshop_engine: RscListbox
-      {
-      	idc = 1503;
-        colorBackground[] = {0,0,0,0.6};
-        colorActive[] = {0,0,0,0.6};
-      	x = 0.139062 * safezoneW + safezoneX;
-      	y = 0.599 * safezoneH + safezoneY;
-      	w = 0.0721875 * safezoneW;
-      	h = 0.022 * safezoneH;
-        onLBSelChanged =
-      };
-
-
-      class modshop_transmission: RscListbox
-      {
-      	idc = 1504;
-        colorBackground[] = {0,0,0,0.6};
-        colorActive[] = {0,0,0,0.6};
-      	x = 0.139062 * safezoneW + safezoneX;
-      	y = 0.687 * safezoneH + safezoneY;
-      	w = 0.0721875 * safezoneW;
-      	h = 0.022 * safezoneH;
-        onLBSelChanged =
-      };
-
-
-      class modshop_turbo: RscListbox
-      {
-      	idc = 1505;
-        colorBackground[] = {0,0,0,0.6};
-        colorActive[] = {0,0,0,0.6};
-      	x = 0.139062 * safezoneW + safezoneX;
-      	y = 0.775 * safezoneH + safezoneY;
-      	w = 0.0721875 * safezoneW;
-      	h = 0.022 * safezoneH;
-        onLBSelChanged =
-      };
-
-
-      class modshop_paintlist: RscListbox
-      {
-      	idc = 1506;
-        colorBackground[] = {0,0,0,0.6};
-        colorActive[] = {0,0,0,0.6};
-      	x = 0.711406 * safezoneW + safezoneX;
-      	y = 0.225 * safezoneH + safezoneY;
-      	w = 0.0876563 * safezoneW;
-      	h = 0.242 * safezoneH;
-        onLBSelChanged  =
-
-
-      };
-
-    }
+     class modshop_paintlist_1: RscListbox
+     {
+       idc = 1506;
+       x = 0.716562 * safezoneW + safezoneX;
+       y = 0.225 * safezoneH + safezoneY;
+       w = 0.139219 * safezoneW;
+       h = 0.253 * safezoneH;
+     };
+   }
 }
