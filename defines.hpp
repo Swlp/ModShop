@@ -74,7 +74,7 @@
 
 #define SL_TEXTURES       0x10
 
-// progress bar
+// progress bar 
 #define ST_VERTICAL       0x01
 #define ST_HORIZONTAL     0
 
@@ -103,18 +103,19 @@ class RscText
     type = CT_STATIC;
     style = ST_MULTI;
     linespacing = 1;
-    colorBackground[] = {0,0,0,0};
+    colorBackground[] = {0.008,0.027,0.031,0};
     colorText[] = {1,1,1,1};
     text = "";
     shadow = 0;
     font = "PuristaLight";
-    SizeEx = 0.02300;
+    SizeEx = 0.04300;
     fixedWidth = 0;
     x = 0;
     y = 0;
     h = 0;
     w = 0;
-
+	borderSize = 0;
+   
 };
 
 class RscPicture
@@ -137,20 +138,24 @@ class RscPicture
     h = 0.15;
 };
 
+
+
+
 class RscButton
 {
-
+    
    access = 0;
     type = CT_BUTTON;
     text = "";
-    colorText[] = {1,1,1,.9};
-    colorDisabled[] = {0.4,0.4,0.4,0};
-    colorBackground[] = {0,0,0,0.6};
-    colorBackgroundDisabled[] = {0,0.0,0};
-    colorBackgroundActive[] = {0,0,0,0.6};
-    colorFocused[] = {0,0,0,0.6};
-    colorShadow[] = {0.023529,0,0.0313725,1};
-    colorBorder[] = {0.023529,0,0.0313725,1};
+    colorText[] = {1, 1, 1, 1};
+    colorActive[] = {1, 1, 1, 1};
+    colorTextSelect[] = {1, 1, 1, 1};
+    colorDisabled[] = {1, 1, 1, 0.25};
+    colorBackground[] = {0, 0, 0, 0.5};
+    colorBackgroundActive[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])", 1};
+    colorBackgroundDisabled[] = {0, 0, 0, 0.5};
+    colorFocused[] = {0, 0, 0, 1};
+    colorShadow[] = {0, 0, 0, 0};
     soundEnter[] = {"\ca\ui\data\sound\onover",0.09,1};
     soundPush[] = {"\ca\ui\data\sound\new1",0,0};
     soundClick[] = {"\ca\ui\data\sound\onclick",0.07,1};
@@ -160,47 +165,14 @@ class RscButton
     y = 0;
     w = 0.055589;
     h = 0.039216;
-    shadow = 2;
-    font = "PuristaLight";
-    sizeEx = 0.03921;
+    shadow = 0;
+    font = "PuristaMedium";
+    sizeEx = 0.02921;
     offsetX = 0.003;
     offsetY = 0.003;
     offsetPressedX = 0.002;
     offsetPressedY = 0.002;
-    borderSize = 0;
-};
-
-class RscButtonMenu
-{
-
-   access = 0;
-    type = CT_BUTTON;
-    text = "";
-    colorText[] = {1,1,1,.9};
-    colorDisabled[] = {0.4,0.4,0.4,0};
-    colorBackground[] = {0.75,0.75,0.75,0.8};
-    colorBackgroundDisabled[] = {0,0.0,0};
-    colorBackgroundActive[] = {0.75,0.75,0.75,1};
-    colorFocused[] = {0.75,0.75,0.75,.5};
-    colorShadow[] = {0.023529,0,0.0313725,1};
-    colorBorder[] = {0.023529,0,0.0313725,1};
-    soundEnter[] = {"\ca\ui\data\sound\onover",0.09,1};
-    soundPush[] = {"\ca\ui\data\sound\new1",0,0};
-    soundClick[] = {"\ca\ui\data\sound\onclick",0.07,1};
-    soundEscape[] = {"\ca\ui\data\sound\onescape",0.09,1};
-    style = 2;
-    x = 0;
-    y = 0;
-    w = 0.055589;
-    h = 0.039216;
-    shadow = 2;
-    font = "PuristaLight";
-    sizeEx = 0.03921;
-    offsetX = 0.003;
-    offsetY = 0.003;
-    offsetPressedX = 0.002;
-    offsetPressedY = 0.002;
-    borderSize = 0;
+    borderSize = 0.01;
 };
 
 class RscFrame
@@ -209,47 +181,20 @@ class RscFrame
     idc = -1;
     style = ST_FRAME;
     shadow = 2;
-    colorBackground[] = {1,1,1,1};
+    colorBackground[] = {6, 10, 19,0.0};
     colorText[] = {1,1,1,0.9};
     font = "PuristaLight";
     sizeEx = 0.03;
     text = "";
 };
-
 class Box
 {
     type = CT_STATIC;
     idc = -1;
     style = ST_CENTER;
     shadow = 2;
-    colorBackground[] = { 0.2,0.9,0.5, 0.9};
-    colorText[] = {1,1,1,0.9};
-    font = "PuristaLight";
-    sizeEx = 0.03;
-    text = "";
-};
-
-class RscListbox
-{
-    type = CT_STATIC;
-    idc = -1;
-    style = ST_CENTER;
-    shadow = 2;
-    colorBackground[] = {0,0,0,0.6};
+    colorBackground[] = {0.09,0.09,0.09,0.9};
     colorText[] = {1,1,1,1};
-    font = "PuristaLight";
-    sizeEx = 0.03;
-    text = "";
-};
-
-class RscEdit
-{
-    type = CT_STATIC;
-    idc = -1;
-    style = ST_CENTER;
-    shadow = 2;
-    colorBackground[] = {0,0,0,0.6};
-    colorText[] = {1,1,1,0.9};
     font = "PuristaLight";
     sizeEx = 0.03;
     text = "";
